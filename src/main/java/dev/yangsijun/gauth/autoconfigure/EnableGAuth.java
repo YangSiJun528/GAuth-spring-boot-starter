@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import({GAuthUserService.class})
+@Import({GAuthAutoConfiguration.class})
 public @interface EnableGAuth {
 }
