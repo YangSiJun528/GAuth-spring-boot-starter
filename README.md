@@ -62,7 +62,7 @@ Step 2. 의존성 추가
 ```groovy
     repositories {
         mavenCentral()
-        maven { url "https://jitpack.io" }
+        maven { url 'https://jitpack.io' }
     }
 ```
 ```groovy
