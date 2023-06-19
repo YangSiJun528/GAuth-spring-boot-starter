@@ -102,8 +102,7 @@ Step 2. 의존성 추가
 ![Im_writing.png](docs/img/writing.png)
 
 ## [버전 별 가이드](#버전-별-가이드)
-- #### [Beta(0.0.0.7)]()
-[Beta(0.0.0.7)](docs/guide/ver_0007/index.md)
+- #### [Beta(0.0.0.7)](docs/guide/ver_0007/index.md)
 
 ## [기여하기](#기여하기)
 버그 제보: 이슈 트래커에 제보할 버그를 작성합니다.  
