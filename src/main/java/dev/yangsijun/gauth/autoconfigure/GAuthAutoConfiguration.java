@@ -17,7 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 
 @AutoConfiguration
-@ConditionalOnClass(GAuthUserService.class)
+//@ConditionalOnClass(GAuthUserService.class)
 @EnableConfigurationProperties(GAuthProperties.class)
 public class GAuthAutoConfiguration {
 
