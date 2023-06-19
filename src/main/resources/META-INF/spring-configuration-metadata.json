@@ -1,0 +1,23 @@
+{"groups": [
+  {
+    "name": "gauth",
+    "type": "gauth.spring.filter.plugin.GAuthFilterApplication",
+    "sourceType": "gauth.spring.filter.plugin.GAuthFilterApplication"
+  }
+],"properties": [
+  {
+    "name": "gauth.client-id",
+    "type": "java.lang.String",
+    "description": "client id of GAuth"
+  },
+  {
+    "name": "gauth.client-secret",
+    "type": "java.lang.String",
+    "description": "client secret of GAuth"
+  },
+  {
+    "name": "gauth.redirect-uri",
+    "type": "java.lang.String",
+    "description": "redirect uri of GAuth"
+  }
+]}
