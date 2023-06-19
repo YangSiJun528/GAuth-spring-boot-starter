@@ -52,7 +52,7 @@ public class SecurityConfig {
 ```
 </details>
 
-더 자세한 사용방법을 알고 싶으시다면 아래의 [가이드](#버전-별-가이드)를 확인하거나 [샘플 프로젝트](https://github.com/YangSiJun528/GAuth-spring-boot-starter-sample)를 
+더 자세한 사용방법을 알고 싶으시다면 아래의 [가이드](#버전-별-가이드)나 [샘플 프로젝트](https://github.com/YangSiJun528/GAuth-spring-boot-starter-sample)를 확인하세요.
 
 ## [시작하기](#시작하기)
 ### [모듈 불러오기](#모듈-불러오기)
