@@ -30,7 +30,6 @@ dependencies {
 	implementation 'com.github.GSM-MSG:GAuth-SDK-Java:v2.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.github.YangSiJun528:GAuth-Spring-Security-Java:0.1.0'
 	annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }
 
