@@ -4,6 +4,7 @@ import dev.yangsijun.gauth.registration.GAuthRegistration;
 import dev.yangsijun.gauth.web.GAuthAuthenticationEntryPoint;
 import dev.yangsijun.gauth.web.GAuthAuthenticationFilter;
 import dev.yangsijun.gauth.web.GAuthAuthorizationRequestRedirectFilter;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -20,7 +21,8 @@ public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
 
     private AuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();
 
-    private AuthenticationFailureHandler failureHandler = new AuthenticationEntryPointFailureHandler(new GAuthAuthenticationEntryPoint());
+    private AuthenticationFailureHandler failureHandler =
+            new AuthenticationEntryPointFailureHandler(new GAuthAuthenticationEntryPoint());
 
     private String loginProcessingUrl = GAuthAuthenticationFilter.DEFAULT_FILTER_PROCESSES_URI;
 
@@ -51,17 +53,6 @@ public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
         return this;
     }
 
-// 하고는 싶은데 잘 안되네
-//    public GAuthLoginConfigurer<H> successUrl(String successUrl) {
-//        successHandler(new ForwardAuthenticationSuccessHandler(successUrl));
-//        return this;
-//    }
-//
-//    public GAuthLoginConfigurer<H> failureUrl(String failureUrl) {
-//        failureHandler(new ForwardAuthenticationFailureHandler(failureUrl));
-//        return this;
-//    }
-
     @Override
     public void init(H http) {
         GAuthAuthenticationFilter authenticationFilter = new GAuthAuthenticationFilter(
@@ -75,15 +66,18 @@ public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
         authenticationFilter.setAuthenticationFailureHandler(this.failureHandler);
         http.addFilterBefore(
                 authenticationFilter,
-                UsernamePasswordAuthenticationFilter.class);
+                UsernamePasswordAuthenticationFilter.class
+        );
     }
 
     @Override
     public void configure(H http) {
-        GAuthAuthorizationRequestRedirectFilter authorizationRequestFilter = new GAuthAuthorizationRequestRedirectFilter(
-               this.loginPageUrl , this.registration);
+        GAuthAuthorizationRequestRedirectFilter authorizationRequestFilter =
+                new GAuthAuthorizationRequestRedirectFilter(
+                        this.loginPageUrl, this.registration);
         http.addFilterAfter(
                 authorizationRequestFilter,
-                FilterSecurityInterceptor.class);
+                FilterSecurityInterceptor.class
+        );
     }
 }

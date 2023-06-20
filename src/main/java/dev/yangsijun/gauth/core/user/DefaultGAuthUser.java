@@ -2,6 +2,7 @@ package dev.yangsijun.gauth.core.user;
 
 import dev.yangsijun.gauth.core.GAuthSpringSecurityPluginVersion;
 import gauth.GAuthToken;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.util.Assert;
@@ -18,8 +19,10 @@ public class DefaultGAuthUser implements GAuthUser {
     private final String nameAttributeKey;
     private final GAuthToken token;
 
-    public DefaultGAuthUser(Collection<? extends GrantedAuthority> authorities, Map<String, Object> attributes,
-                             String nameAttributeKey, GAuthToken token) {
+    public DefaultGAuthUser(
+            Collection<? extends GrantedAuthority> authorities, Map<String, Object> attributes,
+            String nameAttributeKey, GAuthToken token
+    ) {
         Assert.notEmpty(attributes, "attributes cannot be empty");
         Assert.hasText(nameAttributeKey, "nameAttributeKey cannot be empty");
         if (!attributes.containsKey(nameAttributeKey)) {
@@ -32,6 +35,7 @@ public class DefaultGAuthUser implements GAuthUser {
         this.nameAttributeKey = nameAttributeKey;
         this.token = token;
     }
+
     private Set<GrantedAuthority> sortAuthorities(Collection<? extends GrantedAuthority> authorities) {
         SortedSet<GrantedAuthority> sortedAuthorities = new TreeSet<>(
                 Comparator.comparing(GrantedAuthority::getAuthority));

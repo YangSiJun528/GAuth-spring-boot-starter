@@ -5,6 +5,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -21,7 +22,10 @@ public class GAuthAuthorizationRequestRedirectFilter extends OncePerRequestFilte
 
     private final GAuthRegistration registration;
 
-    public GAuthAuthorizationRequestRedirectFilter(String gauthAuthorizationRequestUri, GAuthRegistration registration) {
+    public GAuthAuthorizationRequestRedirectFilter(
+            String gauthAuthorizationRequestUri,
+            GAuthRegistration registration
+    ) {
         this.gauthAuthorizationRequestUri = gauthAuthorizationRequestUri;
         this.registration = registration;
     }

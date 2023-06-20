@@ -1,6 +1,5 @@
 package dev.yangsijun.gauth.autoconfigure;
 
-import dev.yangsijun.gauth.userinfo.GAuthUserService;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.ElementType;

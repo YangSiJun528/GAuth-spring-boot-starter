@@ -11,7 +11,11 @@ public class GAuthAuthorizationRequest {
     private final GAuthRegistration gauthRegistration;
     private final Map<String, Object> additionalParameters;
 
-    public GAuthAuthorizationRequest(String code, GAuthRegistration gauthRegistration, Map<String, Object> additionalParameters) {
+    public GAuthAuthorizationRequest(
+            String code,
+            GAuthRegistration gauthRegistration,
+            Map<String, Object> additionalParameters
+    ) {
         this.code = code;
         this.gauthRegistration = gauthRegistration;
         this.additionalParameters = additionalParameters;

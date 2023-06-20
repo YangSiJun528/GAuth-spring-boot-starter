@@ -8,6 +8,7 @@ import gauth.GAuth;
 import gauth.GAuthToken;
 import gauth.GAuthUserInfo;
 import gauth.exception.GAuthException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
@@ -40,7 +41,8 @@ public class DefaultGAuthUserService implements GAuthUserService<GAuthAuthorizat
             throw handleGAuthException(e);
         } catch (IOException e) {
             throw new GAuthAuthenticationException(GAUTH_SERVER_CODE,
-                    "Something wrong access to GAuth Authorization Sever", e.getCause());
+                    "Something wrong access to GAuth Authorization Sever", e.getCause()
+            );
         }
         return getGAuthUser(info, token);
     }
@@ -58,7 +60,8 @@ public class DefaultGAuthUserService implements GAuthUserService<GAuthAuthorizat
             throw handleGAuthException(e);
         } catch (IOException e) {
             throw new GAuthAuthenticationException(GAUTH_SERVER_CODE,
-                    "Something wrong access to GAuth Authorization Sever", e.getCause());
+                    "Something wrong access to GAuth Authorization Sever", e.getCause()
+            );
         }
         return token;
     }
@@ -90,10 +93,14 @@ public class DefaultGAuthUserService implements GAuthUserService<GAuthAuthorizat
     private GAuthAuthenticationException handleGAuthException(GAuthException ex) {
         if (is4xx(ex.getCode())) {
             return new GAuthAuthenticationException(GAUTH_CLIENT_CODE,
-                    "[GAuth Authorization Server Status Code : " + HttpStatus.valueOf(ex.getCode()).value() + "] ", ex.getCause());
+                    "[GAuth Authorization Server Status Code : " + HttpStatus.valueOf(ex.getCode()).value() + "] ",
+                    ex.getCause()
+            );
         } else {
             return new GAuthAuthenticationException(GAUTH_SERVER_CODE,
-                    "[GAuth Authorization Server Status Code : " + HttpStatus.valueOf(ex.getCode()).value() + "] ", ex.getCause());
+                    "[GAuth Authorization Server Status Code : " + HttpStatus.valueOf(ex.getCode()).value() + "] ",
+                    ex.getCause()
+            );
         }
     }
 

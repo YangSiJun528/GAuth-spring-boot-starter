@@ -10,7 +10,7 @@ public class GAuthAuthenticationException extends AuthenticationException {
     private final String description;
 
     public GAuthAuthenticationException(String errorCode, String description, Throwable cause) {
-        super(errorCode+description, cause);
+        super(errorCode + description, cause);
         Assert.hasText(errorCode, "errorCode cannot be empty");
         this.errorCode = errorCode;
         this.description = description;
