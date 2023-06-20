@@ -22,13 +22,12 @@
 
 ## 시작하기 전에...
 
-해당 모듈은 2가지 의존성을 필요로 합니다.
-
-- `spring-boot-starter-security`
+1. GAuth-spring-boot-starter 모듈은 2가지 의존성을 필요로 합니다.
+- `spring-boot-starter-security`   
 - `spring-boot-starter-web`
 
-GAuth 인증을 사용하기 위해 서비스를 등록하야 합니다.  
-[GAuth.co.kr](GAuth.co.kr)에 접속하여 서비스를 등록할 수 있습니다.
+3. GAuth 인증을 사용하기 위해 서비스를 등록하야 합니다.  
+   [GAuth.co.kr](GAuth.co.kr)에 접속하여 서비스를 등록할 수 있습니다.
 
 ## 시작하기
 
@@ -50,7 +49,7 @@ GAuth 인증을 사용하기 위해 서비스를 등록하야 합니다.
 - gauth.client-secret
 - gauth.redirect-uri
 
-#### 예시
+##### 예시
 
 application.properties
 
@@ -67,7 +66,7 @@ Main Class 또는 Configuration Class에 `@EnableGAuth` 어노테이션을 사�
 > 꼭 Main Class또는 Configuration Class에 사용하지 않아도 정상적으로 동작합니다.  
 > 그러나 관리의 편의를 위해서 Main Class 또는 Configuration Class에 사용하는 것을 추천하고 있습니다.
 
-#### 예시
+##### 예시
 
 ```java
 
