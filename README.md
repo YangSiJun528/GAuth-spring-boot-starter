@@ -25,7 +25,6 @@ GAuth를 OAuth와 유사한 방식으로 적용하면서 많은 노력을 줄일
 #### 예시 1
 
 ```java
-
 @Configuration
 public class SecurityConfig {
     // ...
@@ -42,7 +41,6 @@ public class SecurityConfig {
 #### 예시 2
 
 ```java
-
 @Configuration
 public class SecurityConfig {
     // 생략
@@ -86,14 +84,14 @@ Step 2. 의존성 추가
 #### gradle
 
 ```groovy
-    repositories {
+repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
 ```
 
 ```groovy
-    dependencies {
+dependencies {
     implementation 'com.github.YangSiJun528:GAuth-spring-boot-starter:{Version}'
 }
 ```
@@ -101,14 +99,14 @@ Step 2. 의존성 추가
 #### gradle.kts
 
 ```groovy
-    repositories {
+repositories {
     mavenCentral()
     maven(url = "https://jitpack.io")
 }
 ```
 
 ```groovy
-    dependencies {
+dependencies {
     implementation("com.github.YangSiJun528:GAuth-spring-boot-starter:{Version}")
 }
 ```
@@ -116,7 +114,6 @@ Step 2. 의존성 추가
 #### maven
 
 ```xml
-
 <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
@@ -124,7 +121,6 @@ Step 2. 의존성 추가
 ```
 
 ```xml
-
 <dependency>
     <groupId>com.github.YangSiJun528</groupId>
     <artifactId>GAuth-spring-boot-starter</artifactId>
