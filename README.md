@@ -128,11 +128,6 @@ dependencies {
 </dependency>
 ```
 
-## [아키텍처 설명](#아키텍처-설명)
-
-작성중입니다...
-![Im_writing.png](docs/img/writing.png)
-
 ## [버전 별 가이드](#버전-별-가이드)
 
 - #### [1.0.0](docs/guide/ver_100/index.md) 
