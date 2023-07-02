@@ -130,7 +130,7 @@ dependencies {
 
 ## [버전 별 가이드](#버전-별-가이드)
 
-- #### [1.0.0](docs/guide/ver_100/index.md) 
+- #### [1.0.1](docs/guide/ver_100/index.md) 
 
 ## [기여하기](#기여하기)
 
