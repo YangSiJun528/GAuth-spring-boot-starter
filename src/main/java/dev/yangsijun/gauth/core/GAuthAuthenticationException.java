@@ -3,7 +3,6 @@ package dev.yangsijun.gauth.core;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.util.Assert;
 
-// 내 로직 문제
 public class GAuthAuthenticationException extends AuthenticationException {
 
     private final String errorCode;

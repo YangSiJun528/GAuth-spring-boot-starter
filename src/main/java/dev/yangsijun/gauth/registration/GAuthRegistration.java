@@ -1,9 +1,10 @@
 package dev.yangsijun.gauth.registration;
 
-import dev.yangsijun.gauth.core.GAuthSpringSecurityPluginVersion;
+import dev.yangsijun.gauth.core.GAuthPluginVersion;
+import org.springframework.util.Assert;
 
 public class GAuthRegistration {
-    private static final long serialVersionUID = GAuthSpringSecurityPluginVersion.SERIAL_VERSION_UID;
+    private static final long serialVersionUID = GAuthPluginVersion.SERIAL_VERSION_UID;
 
     private String clientId;
 
@@ -12,9 +13,9 @@ public class GAuthRegistration {
     private String redirectUri;
 
     public GAuthRegistration(String clientId, String clientSecret, String redirectUri) {
-        if (clientId == null || clientSecret == null || redirectUri == null) {
-            throw new IllegalArgumentException("clientId, clientSecret, and redirectUri must not be null");
-        }
+        Assert.notNull(clientId, "clientId must not be null");
+        Assert.notNull(clientSecret, "clientSecret must not be null");
+        Assert.notNull(redirectUri, "redirectUri must not be null");
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         this.redirectUri = redirectUri;

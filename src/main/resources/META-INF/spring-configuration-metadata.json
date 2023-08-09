@@ -1,22 +1,22 @@
 {"groups": [
   {
-    "name": "gauth",
-    "type": "gauth.spring.filter.plugin.GAuthFilterApplication",
-    "sourceType": "gauth.spring.filter.plugin.GAuthFilterApplication"
+    "name": "gauth.security",
+    "type": "dev.yangsijun.gauth.autoconfiguration.GAuthProperties",
+    "sourceType": "dev.yangsijun.gauth.autoconfiguration.GAuthProperties"
   }
 ],"properties": [
   {
-    "name": "gauth.client-id",
+    "name": "gauth.security.client-id",
     "type": "java.lang.String",
     "description": "client id of GAuth"
   },
   {
-    "name": "gauth.client-secret",
+    "name": "gauth.security.client-secret",
     "type": "java.lang.String",
     "description": "client secret of GAuth"
   },
   {
-    "name": "gauth.redirect-uri",
+    "name": "gauth.security.redirect-uri",
     "type": "java.lang.String",
     "description": "redirect uri of GAuth"
   }

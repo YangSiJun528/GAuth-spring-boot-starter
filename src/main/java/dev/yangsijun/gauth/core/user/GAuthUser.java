@@ -1,7 +1,5 @@
 package dev.yangsijun.gauth.core.user;
 
-import gauth.GAuthToken;
-
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,6 +16,4 @@ public interface GAuthUser extends AuthenticatedPrincipal {
     Map<String, Object> getAttributes();
 
     Collection<? extends GrantedAuthority> getAuthorities();
-
-    GAuthToken getGAuthToken();
 }

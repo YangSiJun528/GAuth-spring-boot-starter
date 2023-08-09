@@ -4,20 +4,18 @@ import dev.yangsijun.gauth.registration.GAuthRegistration;
 import dev.yangsijun.gauth.web.GAuthAuthenticationEntryPoint;
 import dev.yangsijun.gauth.web.GAuthAuthenticationFilter;
 import dev.yangsijun.gauth.web.GAuthAuthorizationRequestRedirectFilter;
-
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 import org.springframework.security.web.authentication.*;
-import org.springframework.security.web.context.DelegatingSecurityContextRepository;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.security.web.context.RequestAttributeSecurityContextRepository;
 
 public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
         extends AbstractHttpConfigurer<GAuthLoginConfigurer<H>, H> {
     private final GAuthRegistration registration;
-    private AuthenticationManager authenticationManager;
+
+    private final AuthenticationConfiguration authenticationConfiguration;
 
     private AuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();
 
@@ -28,9 +26,9 @@ public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
 
     private String loginPageUrl = GAuthAuthorizationRequestRedirectFilter.DEFAULT_AUTHORIZATION_REQUEST_BASE_URI;
 
-    public GAuthLoginConfigurer(GAuthRegistration registration, AuthenticationManager authenticationManager) {
+    public GAuthLoginConfigurer(GAuthRegistration registration, AuthenticationConfiguration authenticationConfiguration) {
         this.registration = registration;
-        this.authenticationManager = authenticationManager;
+        this.authenticationConfiguration = authenticationConfiguration;
     }
 
     public GAuthLoginConfigurer<H> loginProcessingUrl(String loginProcessingUrl) {
@@ -54,13 +52,11 @@ public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
     }
 
     @Override
-    public void init(H http) {
+    public void init(H http) throws Exception {
         GAuthAuthenticationFilter authenticationFilter = new GAuthAuthenticationFilter(
-                this.loginProcessingUrl, this.registration, this.authenticationManager);
-        authenticationFilter.setSecurityContextHolderStrategy(getSecurityContextHolderStrategy());
-        authenticationFilter.setSecurityContextRepository(new DelegatingSecurityContextRepository(
-                new RequestAttributeSecurityContextRepository(), new HttpSessionSecurityContextRepository()));
-        authenticationFilter.setAuthenticationManager(this.authenticationManager);
+                this.loginProcessingUrl, this.authenticationConfiguration.getAuthenticationManager());
+        authenticationFilter.setSecurityContextRepository(new HttpSessionSecurityContextRepository());
+        authenticationFilter.setAuthenticationManager(this.authenticationConfiguration.getAuthenticationManager());
         authenticationFilter.setFilterProcessesUrl(this.loginProcessingUrl);
         authenticationFilter.setAuthenticationSuccessHandler(this.successHandler);
         authenticationFilter.setAuthenticationFailureHandler(this.failureHandler);
