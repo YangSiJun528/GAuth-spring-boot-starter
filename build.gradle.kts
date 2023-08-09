@@ -13,12 +13,13 @@ tasks {
 
     named<Jar>("jar") {
         enabled = true
+        archiveClassifier.set("")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
 
 group = "dev.yangsijun"
-version = "1.0.0-Beta-1"
+version = "2.0.0-Beta-1"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
