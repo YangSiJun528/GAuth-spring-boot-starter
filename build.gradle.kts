@@ -18,14 +18,24 @@ tasks {
     }
 }
 
+
 group = "dev.yangsijun"
-version = "2.0.0-Beta-1"
+version = "2.0.0-alpha-2"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
     withSourcesJar()
     withJavadocJar()
+}
+
+tasks {
+    val javadocJarTask = named<Jar>("javadocJar")
+    javadocJarTask.configure {
+        //archiveBaseName.set("my-custom-javadoc") // Change this to your desired name
+        archiveClassifier.set("")
+        duplicatesStrategy = DuplicatesStrategy.WARN
+    }
 }
 
 repositories {
