@@ -13,14 +13,14 @@ tasks {
 
     named<Jar>("jar") {
         enabled = true
-        //archiveClassifier.set("")
+        archiveClassifier.set("")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
 
 
 group = "dev.yangsijun"
-version = "2.0.0-alpha-2"
+version = "2.0.0-alpha-3"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -32,8 +32,7 @@ java {
 tasks {
     val javadocJarTask = named<Jar>("javadocJar")
     javadocJarTask.configure {
-        //archiveBaseName.set("my-custom-javadoc") // Change this to your desired name
-        archiveClassifier.set("")
+        archiveClassifier.set("javadoc")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
