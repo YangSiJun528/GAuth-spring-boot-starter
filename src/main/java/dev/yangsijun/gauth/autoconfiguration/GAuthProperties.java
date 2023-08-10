@@ -2,6 +2,12 @@ package dev.yangsijun.gauth.autoconfiguration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * {@link ConfigurationProperties Configuration properties} for GAuth Client.
+ *
+ * @author Yang Sijun
+ * @since 2.0.0
+ */
 @ConfigurationProperties(prefix = "gauth.security")
 public class GAuthProperties {
     private String clientId;
