@@ -13,7 +13,7 @@ tasks {
 
     named<Jar>("jar") {
         enabled = true
-        archiveClassifier.set("")
+        //archiveClassifier.set("")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
