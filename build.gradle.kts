@@ -13,7 +13,7 @@ tasks {
 
     named<Jar>("jar") {
         enabled = true
-        archiveClassifier.set("")
+        archiveClassifier.set("plain")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
@@ -32,7 +32,7 @@ java {
 tasks {
     val javadocJarTask = named<Jar>("javadocJar")
     javadocJarTask.configure {
-        archiveClassifier.set("javadoc")
+        archiveClassifier.set("")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
