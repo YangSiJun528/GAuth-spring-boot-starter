@@ -13,7 +13,7 @@ tasks {
 
     named<Jar>("jar") {
         enabled = true
-        archiveClassifier.set("plain")
+        archiveClassifier.set("")
         duplicatesStrategy = DuplicatesStrategy.WARN
     }
 }
@@ -27,14 +27,6 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
     withSourcesJar()
     withJavadocJar()
-}
-
-tasks {
-    val javadocJarTask = named<Jar>("javadocJar")
-    javadocJarTask.configure {
-        archiveClassifier.set("")
-        duplicatesStrategy = DuplicatesStrategy.WARN
-    }
 }
 
 repositories {
