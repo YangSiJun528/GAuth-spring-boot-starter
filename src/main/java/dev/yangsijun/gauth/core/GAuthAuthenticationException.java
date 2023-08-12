@@ -3,7 +3,11 @@ package dev.yangsijun.gauth.core;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.util.Assert;
 
-// 내 로직 문제
+/**
+ * This exception is thrown for all GAuth related Authentication errors.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthenticationException extends AuthenticationException {
 
     private final String errorCode;

@@ -1,17 +1,22 @@
 package dev.yangsijun.gauth.web;
 
 import dev.yangsijun.gauth.registration.GAuthRegistration;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This Filter initiates the authorization code grant flow by redirecting the End-User's user-agent to the GAuth Authorization Server's Authorization Endpoint.
+ *
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthorizationRequestRedirectFilter extends OncePerRequestFilter {
 
     public static final String DEFAULT_AUTHORIZATION_REQUEST_BASE_URI = "/gauth/authorization";
@@ -38,7 +43,6 @@ public class GAuthAuthorizationRequestRedirectFilter extends OncePerRequestFilte
         } else {
             this.authorizationRedirectStrategy.sendRedirect(request, response, getRedirectUri());
         }
-        return;
     }
 
     private String getRedirectUri() {

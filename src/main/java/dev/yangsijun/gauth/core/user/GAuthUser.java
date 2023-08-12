@@ -1,7 +1,5 @@
 package dev.yangsijun.gauth.core.user;
 
-import gauth.GAuthToken;
-
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +7,11 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * A representation of a user Principal that is registered with an GAuth Provider.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public interface GAuthUser extends AuthenticatedPrincipal {
     @Nullable
     default <A> A getAttribute(String name) {
@@ -18,6 +21,4 @@ public interface GAuthUser extends AuthenticatedPrincipal {
     Map<String, Object> getAttributes();
 
     Collection<? extends GrantedAuthority> getAuthorities();
-
-    GAuthToken getGAuthToken();
 }
