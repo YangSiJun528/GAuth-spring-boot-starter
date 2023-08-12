@@ -8,11 +8,10 @@
         * [3. 환경 설정하기](#3-환경-설정하기)
             * [Properties 정의하기](#properties-정의하기)
             * [예시](#예시)
-        * [4. Security Configuration에 추가하기](#4-security-configuration에-추가하기)
+        * [4. Security Configuration에 적용하기](#4-security-configuration에-적용하기)
+            * [GAuthLoginConfigurer 옵션](#GAuthLoginConfigurer-옵션)
             * [예시 1](#예시-1)
             * [예시 2](#예시-2)
-        * [클래스 설명](#클래스-설명)
-            * [`GAuthLoginConfigurer`](#gauthloginconfigurer)
 
 <!-- TOC -->
 
@@ -22,7 +21,7 @@
 - `spring-boot-starter-security`   
 - `spring-boot-starter-web`
 
-3. GAuth 인증을 사용하기 위해 서비스를 등록하야 합니다.  
+2. GAuth 인증을 사용하기 위해 서비스를 등록하야 합니다.  
    [GAuth.co.kr](GAuth.co.kr)에 접속하여 서비스를 등록할 수 있습니다.
 
 ## 시작하기
@@ -55,13 +54,13 @@ gauth.security.client-secret:1234567890qwertyuiop1234567890qwertyuiop
 gauth.security.redirect-uri:http://localhost:8080/login/gauth/code
 ```
 
-### 4. Security Configuration에 추가하기
+### 4. Security Configuration에 적용하기
 
 Spring Security의 Configuration에 관한 내용은 [공식문서](https://docs.spring.io/spring-security/reference/index.html)를 참고하세요.
 
 Spring Security의 SecurityFilterChain에 Gauth 설정을 위한 `GAuthLoginConfigurer`를 등록해야 합니다.
 
-#### `GAuthLoginConfigurer` 옵션
+#### GAuthLoginConfigurer 옵션
 
 - `loginPageUrl(String loginPageUrl)`
     - GAuth 로그인 페이지로 리다이렉트되는 주소를 설정합니다.
