@@ -6,9 +6,15 @@ import dev.yangsijun.gauth.userinfo.GAuthUserService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Map;
 
+/**
+ * An {@link AuthenticationProvider} implementation that retrieves GAuth user information from a {@link GAuthUserService}.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthenticationProvider implements AuthenticationProvider {
 
     private final GAuthUserService<GAuthAuthorizationRequest, GAuthUser> userService;

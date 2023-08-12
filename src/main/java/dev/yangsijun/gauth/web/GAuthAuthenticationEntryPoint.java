@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ An implementation of the {@link AuthenticationEntryPoint} that handles unauthorized requests.
+ *
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override

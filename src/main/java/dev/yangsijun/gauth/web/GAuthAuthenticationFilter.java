@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 
+/**
+ * An implementation of an {@link AbstractAuthenticationProcessingFilter} for GAuth Login.
+ *
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
     private static final String NO_PARAMETER_CODE = "not_found_code_parameter";

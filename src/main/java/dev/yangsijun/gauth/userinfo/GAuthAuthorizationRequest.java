@@ -3,6 +3,14 @@ package dev.yangsijun.gauth.userinfo;
 import java.util.Collections;
 import java.util.Map;
 
+/**
+ * Represents a request the {@link GAuthUserService} uses when initiating a request to
+ * the UserInfo Endpoint.
+ * @author Yang Sijun
+ * @since 2.0.0
+ * @see dev.yangsijun.gauth.registration.GAuthRegistration
+ * @see GAuthUserService
+ */
 public class GAuthAuthorizationRequest {
 
     private final String code;

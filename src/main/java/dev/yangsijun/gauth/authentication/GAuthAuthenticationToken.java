@@ -10,6 +10,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * An implementation of an {@link AbstractAuthenticationToken} that represents an GAuth Authentication.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
     private static final long serialVersionUID = GAuthPluginVersion.SERIAL_VERSION_UID;
     private String code;

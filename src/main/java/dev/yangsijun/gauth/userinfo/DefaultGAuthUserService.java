@@ -13,6 +13,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.*;
 
+/**
+ * A default implementation of {@link GAuthUserService} that supports GAuth providers.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class DefaultGAuthUserService
         implements GAuthUserService<GAuthAuthorizationRequest, GAuthUser> {
 

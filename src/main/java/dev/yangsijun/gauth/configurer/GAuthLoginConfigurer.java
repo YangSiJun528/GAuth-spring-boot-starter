@@ -11,6 +11,11 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 import org.springframework.security.web.authentication.*;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 
+/**
+ * An AbstractHttpConfigurer for GAuth Client support.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
         extends AbstractHttpConfigurer<GAuthLoginConfigurer<H>, H> {
     private final GAuthRegistration registration;

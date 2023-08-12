@@ -3,6 +3,11 @@ package dev.yangsijun.gauth.registration;
 import dev.yangsijun.gauth.core.GAuthPluginVersion;
 import org.springframework.util.Assert;
 
+/**
+ * This class is used to map OAuth2ClientProperties to client registrations.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthRegistration {
     private static final long serialVersionUID = GAuthPluginVersion.SERIAL_VERSION_UID;
 

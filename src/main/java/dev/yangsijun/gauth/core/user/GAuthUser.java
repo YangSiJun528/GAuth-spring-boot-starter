@@ -7,6 +7,11 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * A representation of a user Principal that is registered with an GAuth Provider.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public interface GAuthUser extends AuthenticatedPrincipal {
     @Nullable
     default <A> A getAttribute(String name) {

@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This Filter initiates the authorization code grant flow by redirecting the End-User's user-agent to the GAuth Authorization Server's Authorization Endpoint.
+ *
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthAuthorizationRequestRedirectFilter extends OncePerRequestFilter {
 
     public static final String DEFAULT_AUTHORIZATION_REQUEST_BASE_URI = "/gauth/authorization";

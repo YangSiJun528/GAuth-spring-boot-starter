@@ -6,6 +6,11 @@ import org.springframework.http.HttpStatus;
 
 import java.io.IOException;
 
+/**
+ * A template class which adds convenience functionality for GAuth-related actions.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class GAuthTemplate {
     private static final String GAUTH_CLIENT_CODE = "gauth_client_error";
     private static final String GAUTH_SERVER_CODE = "gauth_server_error";

@@ -6,6 +6,11 @@ import org.springframework.util.Assert;
 
 import java.util.*;
 
+/**
+ * The default implementation of the {@link GAuthUser} interface/.
+ * @since 2.0.0
+ * @author Yang Sijun
+ */
 public class DefaultGAuthUser implements GAuthUser {
     private static final long serialVersionUID = GAuthPluginVersion.SERIAL_VERSION_UID;
 
