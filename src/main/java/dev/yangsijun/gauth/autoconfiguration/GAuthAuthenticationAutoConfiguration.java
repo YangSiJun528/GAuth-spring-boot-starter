@@ -1,6 +1,5 @@
 package dev.yangsijun.gauth.autoconfiguration;
 
-import dev.yangsijun.gauth.authentication.GAuthAuthenticationProvider;
 import dev.yangsijun.gauth.configurer.GAuthLoginConfigurer;
 import dev.yangsijun.gauth.core.user.GAuthUser;
 import dev.yangsijun.gauth.registration.GAuthRegistration;
@@ -15,25 +14,25 @@ import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @AutoConfiguration
 @ConditionalOnClass(GAuthTemplate.class)
 @AutoConfigureAfter(AuthenticationConfiguration.class)
+@Import({AuthenticationConfiguration.class, GAuthClientAutoConfiguration.class})
 public class GAuthAuthenticationAutoConfiguration {
 
     private final AuthenticationConfiguration authenticationConfiguration;
     private final GAuth gAuth;
     private final GAuthTemplate gAuthTemplate;
-    private final GAuthUserService gAuthUserService;
     private final GAuthRegistration gAuthRegistration;
 
-    public GAuthAuthenticationAutoConfiguration(AuthenticationConfiguration authenticationConfiguration, GAuth gAuth, GAuthTemplate gAuthTemplate, GAuthUserService gAuthUserService, GAuthRegistration gAuthRegistration) {
+    public GAuthAuthenticationAutoConfiguration(AuthenticationConfiguration authenticationConfiguration, GAuth gAuth, GAuthTemplate gAuthTemplate, GAuthRegistration gAuthRegistration) {
         this.authenticationConfiguration = authenticationConfiguration;
         this.gAuth = gAuth;
         this.gAuthTemplate = gAuthTemplate;
-        this.gAuthUserService = gAuthUserService;
         this.gAuthRegistration = gAuthRegistration;
     }
 
@@ -47,12 +46,6 @@ public class GAuthAuthenticationAutoConfiguration {
     @ConditionalOnMissingBean(GAuthLoginConfigurer.class)
     public GAuthLoginConfigurer<HttpSecurity> autoGAuthAuthenticationConfigurer() {
         return new GAuthLoginConfigurer<>(gAuthRegistration, authenticationConfiguration);
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(GAuthAuthenticationProvider.class)
-    public GAuthAuthenticationProvider autoGAuthAuthenticationProvider() {
-        return new GAuthAuthenticationProvider(gAuthUserService);
     }
 
     @Bean
