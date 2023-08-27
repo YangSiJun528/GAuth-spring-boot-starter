@@ -37,7 +37,7 @@ public class GAuthAuthenticationAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(GAuthUserService.class)
     public GAuthUserService<GAuthAuthorizationRequest, GAuthUser> autoGAuthUserService() {
-        return new DefaultGAuthUserService(gAuth, gAuthRegistration);
+        return new DefaultGAuthUserService(gAuth);
     }
 
     @Bean

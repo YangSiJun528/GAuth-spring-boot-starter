@@ -6,14 +6,14 @@ import dev.yangsijun.gauth.userinfo.GAuthUserService;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.Map;
 
 /**
  * An {@link AuthenticationProvider} implementation that retrieves GAuth user information from a {@link GAuthUserService}.
- * @since 2.0.0
+ *
  * @author Yang Sijun
+ * @since 2.0.0
  */
 public class GAuthAuthenticationProvider implements AuthenticationProvider {
 
@@ -30,7 +30,7 @@ public class GAuthAuthenticationProvider implements AuthenticationProvider {
         GAuthAuthenticationToken authenticationToken = (GAuthAuthenticationToken) authentication;
         Map<String, Object> additionalParameters = authenticationToken.getAdditionalParameters();
         GAuthUser gAuthUser = userService.loadUser(
-                new GAuthAuthorizationRequest(authenticationToken.getCode(), additionalParameters)
+                new GAuthAuthorizationRequest(authenticationToken.getCode(), additionalParameters, authenticationToken.getRegistration())
         );
         GAuthAuthenticationToken authenticationResult =
                 new GAuthAuthenticationToken(gAuthUser.getAuthorities(), authenticationToken.getCode(), gAuthUser);

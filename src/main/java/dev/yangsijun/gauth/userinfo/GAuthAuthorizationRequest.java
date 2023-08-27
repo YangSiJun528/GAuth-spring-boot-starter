@@ -1,5 +1,7 @@
 package dev.yangsijun.gauth.userinfo;
 
+import dev.yangsijun.gauth.registration.GAuthRegistration;
+
 import java.util.Collections;
 import java.util.Map;
 
@@ -15,17 +17,20 @@ public class GAuthAuthorizationRequest {
 
     private final String code;
     private final Map<String, Object> additionalParameters;
+    private final GAuthRegistration registration;
 
     public GAuthAuthorizationRequest(
             String code,
-            Map<String, Object> additionalParameters
-    ) {
+            Map<String, Object> additionalParameters,
+            GAuthRegistration registration) {
         this.code = code;
         this.additionalParameters = additionalParameters;
+        this.registration = registration;
     }
 
-    public GAuthAuthorizationRequest(String code) {
+    public GAuthAuthorizationRequest(String code, GAuthRegistration registration) {
         this.code = code;
+        this.registration = registration;
         this.additionalParameters = Collections.emptyMap();
     }
 
@@ -37,4 +42,7 @@ public class GAuthAuthorizationRequest {
         return code;
     }
 
+    public GAuthRegistration getRegistration() {
+        return registration;
+    }
 }

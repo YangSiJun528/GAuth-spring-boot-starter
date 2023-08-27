@@ -23,13 +23,11 @@ public class DefaultGAuthUserService
         implements GAuthUserService<GAuthAuthorizationRequest, GAuthUser> {
 
     private final GAuth gAuth;
-    private final GAuthRegistration registration;
     private final GAuthTemplate gAuthTemplate;
     private final static String GAUTH_PREFIX = "GAUTH_";
 
-    public DefaultGAuthUserService(GAuth gAuth, GAuthRegistration registration) {
+    public DefaultGAuthUserService(GAuth gAuth) {
         this.gAuth = gAuth;
-        this.registration = registration;
         this.gAuthTemplate = new GAuthTemplate();
     }
 
@@ -45,6 +43,7 @@ public class DefaultGAuthUserService
     }
 
     private GAuthToken getToken(GAuthAuthorizationRequest request) {
+        GAuthRegistration registration = request.getRegistration();
         String code = request.getCode();
         String clientId = registration.getClientId();
         String clientSecret = registration.getClientSecret();

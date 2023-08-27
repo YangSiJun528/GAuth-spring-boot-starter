@@ -59,7 +59,7 @@ public final class GAuthLoginConfigurer<H extends HttpSecurityBuilder<H>>
     @Override
     public void init(H http) throws Exception {
         GAuthAuthenticationFilter authenticationFilter = new GAuthAuthenticationFilter(
-                this.loginProcessingUrl, this.authenticationConfiguration.getAuthenticationManager());
+                this.loginProcessingUrl, this.authenticationConfiguration.getAuthenticationManager(), registration);
         authenticationFilter.setSecurityContextRepository(new HttpSessionSecurityContextRepository());
         authenticationFilter.setAuthenticationManager(this.authenticationConfiguration.getAuthenticationManager());
         authenticationFilter.setFilterProcessesUrl(this.loginProcessingUrl);

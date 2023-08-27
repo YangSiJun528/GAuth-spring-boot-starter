@@ -2,6 +2,7 @@ package dev.yangsijun.gauth.web;
 
 import dev.yangsijun.gauth.authentication.GAuthAuthenticationToken;
 import dev.yangsijun.gauth.core.GAuthAuthenticationException;
+import dev.yangsijun.gauth.registration.GAuthRegistration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -15,20 +16,20 @@ import java.util.Collections;
 /**
  * An implementation of an {@link AbstractAuthenticationProcessingFilter} for GAuth Login.
  *
- * @since 2.0.0
  * @author Yang Sijun
+ * @since 2.0.0
  */
 public class GAuthAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
-
     private static final String NO_PARAMETER_CODE = "not_found_code_parameter";
-
     public static final String DEFAULT_FILTER_PROCESSES_URI = "/login/code/gauth";
+    private final GAuthRegistration registration;
 
     public GAuthAuthenticationFilter(
             String defaultFilterProcessesUrl,
-            AuthenticationManager authenticationManager
-    ) {
+            AuthenticationManager authenticationManager,
+            GAuthRegistration registration) {
         super(new AntPathRequestMatcher(defaultFilterProcessesUrl, "GET"));
+        this.registration = registration;
         this.setAuthenticationManager(authenticationManager);
     }
 
@@ -44,7 +45,7 @@ public class GAuthAuthenticationFilter extends AbstractAuthenticationProcessingF
         }
         Object authenticationDetails = this.authenticationDetailsSource.buildDetails(request);
         GAuthAuthenticationToken authenticationRequest =
-                new GAuthAuthenticationToken(code, Collections.emptyMap());
+                new GAuthAuthenticationToken(code, Collections.emptyMap(), registration);
         authenticationRequest.setDetails(authenticationDetails);
         GAuthAuthenticationToken authenticationResult =
                 (GAuthAuthenticationToken) this.getAuthenticationManager().authenticate(authenticationRequest);

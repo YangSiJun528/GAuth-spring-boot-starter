@@ -36,7 +36,8 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
 
     public GAuthAuthenticationToken(
             String code,
-            Map<String, Object> additionalParameters
+            Map<String, Object> additionalParameters,
+            GAuthRegistration registration
     ) {
         super(Collections.emptyList());
         this.code = code;
@@ -61,6 +62,10 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
 
     public Map<String, Object> getAdditionalParameters() {
         return additionalParameters;
+    }
+
+    public GAuthRegistration getRegistration() {
+        return registration;
     }
 
     @Override
