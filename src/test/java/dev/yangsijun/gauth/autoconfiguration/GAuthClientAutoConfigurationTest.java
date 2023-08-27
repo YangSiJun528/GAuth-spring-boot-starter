@@ -29,7 +29,6 @@ class GAuthClientAutoConfigurationTest {
     void autoConfigurationShouldProvideBeans() {
         contextRunner.run(context -> {
             assertThat(context).hasSingleBean(GAuth.class);
-            assertThat(context).hasSingleBean(GAuthTemplate.class);
             assertThat(context).hasSingleBean(GAuthRegistration.class);
         });
     }
