@@ -2,6 +2,7 @@ package dev.yangsijun.gauth.authentication;
 
 import dev.yangsijun.gauth.core.GAuthPluginVersion;
 import dev.yangsijun.gauth.core.user.GAuthUser;
+import dev.yangsijun.gauth.registration.GAuthRegistration;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -19,6 +20,7 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
     private static final long serialVersionUID = GAuthPluginVersion.SERIAL_VERSION_UID;
     private String code;
     private GAuthUser principal;
+    private GAuthRegistration registration;
     private Map<String, Object> additionalParameters = new HashMap<>();
 
     public GAuthAuthenticationToken(
