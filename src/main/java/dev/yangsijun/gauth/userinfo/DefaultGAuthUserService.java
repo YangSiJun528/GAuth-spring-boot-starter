@@ -15,8 +15,9 @@ import java.util.*;
 
 /**
  * A default implementation of {@link GAuthUserService} that supports GAuth providers.
- * @since 2.0.0
+ *
  * @author Yang Sijun
+ * @since 2.0.0
  */
 public class DefaultGAuthUserService
         implements GAuthUserService<GAuthAuthorizationRequest, GAuthUser> {
@@ -26,11 +27,10 @@ public class DefaultGAuthUserService
     private final GAuthTemplate gAuthTemplate;
     private final static String GAUTH_PREFIX = "GAUTH_";
 
-    public DefaultGAuthUserService(GAuth gAuth, GAuthRegistration registration,
-                                   GAuthTemplate gAuthTemplate) {
+    public DefaultGAuthUserService(GAuth gAuth, GAuthRegistration registration) {
         this.gAuth = gAuth;
         this.registration = registration;
-        this.gAuthTemplate = gAuthTemplate;
+        this.gAuthTemplate = new GAuthTemplate();
     }
 
     @Override

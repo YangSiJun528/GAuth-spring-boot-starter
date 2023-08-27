@@ -29,12 +29,6 @@ public class GAuthClientAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean(GAuthTemplate.class)
-    public GAuthTemplate autoGAuthTemplate() {
-        return new GAuthTemplate();
-    }
-
-    @Bean
     @ConditionalOnMissingBean(GAuthRegistration.class)
     public GAuthRegistration autoGAuthRegistration() {
         return new GAuthRegistration(properties.getClientId(), properties.getClientSecret(), properties.getRedirectUri());

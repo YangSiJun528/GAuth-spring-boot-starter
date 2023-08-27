@@ -26,20 +26,18 @@ public class GAuthAuthenticationAutoConfiguration {
 
     private final AuthenticationConfiguration authenticationConfiguration;
     private final GAuth gAuth;
-    private final GAuthTemplate gAuthTemplate;
     private final GAuthRegistration gAuthRegistration;
 
-    public GAuthAuthenticationAutoConfiguration(AuthenticationConfiguration authenticationConfiguration, GAuth gAuth, GAuthTemplate gAuthTemplate, GAuthRegistration gAuthRegistration) {
+    public GAuthAuthenticationAutoConfiguration(AuthenticationConfiguration authenticationConfiguration, GAuth gAuth, GAuthRegistration gAuthRegistration) {
         this.authenticationConfiguration = authenticationConfiguration;
         this.gAuth = gAuth;
-        this.gAuthTemplate = gAuthTemplate;
         this.gAuthRegistration = gAuthRegistration;
     }
 
     @Bean
     @ConditionalOnMissingBean(GAuthUserService.class)
     public GAuthUserService<GAuthAuthorizationRequest, GAuthUser> autoGAuthUserService() {
-        return new DefaultGAuthUserService(gAuth, gAuthRegistration, gAuthTemplate);
+        return new DefaultGAuthUserService(gAuth, gAuthRegistration);
     }
 
     @Bean
