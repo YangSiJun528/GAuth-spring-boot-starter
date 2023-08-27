@@ -127,8 +127,8 @@ dependencies {
 
 ## [버전 별 가이드](#버전-별-가이드)
 
-- #### [1.0.1 - Deprecated](docs/guide/ver_101/index.md)
-- #### [2.0.0](docs/guide/ver_200/index.md)
+- #### [1.0.1 - Deprecated](docs/guide/ver_101/reference.md)
+- #### [2.0.0](docs/guide/ver_200/reference.md)
 
 ## [기여하기](#기여하기)
 
