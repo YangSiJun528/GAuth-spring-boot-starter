@@ -1,13 +1,9 @@
 package dev.yangsijun.gauth.template;
 
 import dev.yangsijun.gauth.core.GAuthAuthenticationException;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientResponseException;
-import org.springframework.web.client.UnknownHttpStatusCodeException;
-
-import java.io.IOException;
 
 /**
  * A template class which adds convenience functionality for GAuth-related actions.
