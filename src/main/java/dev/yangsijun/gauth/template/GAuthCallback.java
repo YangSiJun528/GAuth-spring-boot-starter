@@ -1,5 +1,8 @@
 package dev.yangsijun.gauth.template;
 
+import dev.yangsijun.gauth.core.GAuthAuthenticationException;
+import org.springframework.web.client.HttpStatusCodeException;
+
 import java.io.IOException;
 
 /**
@@ -14,5 +17,5 @@ import java.io.IOException;
 
 @FunctionalInterface
 public interface GAuthCallback<T> {
-    T execute() throws IOException; //GAuthException;
+    T execute() throws HttpStatusCodeException, GAuthAuthenticationException;
 }
