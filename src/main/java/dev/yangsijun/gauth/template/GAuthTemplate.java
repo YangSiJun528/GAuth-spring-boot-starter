@@ -15,8 +15,6 @@ public class GAuthTemplate {
     private static final String GAUTH_CLIENT_CODE = "gauth_client_error";
     private static final String GAUTH_SERVER_CODE = "gauth_server_error";
 
-    // todo 근데 이거 굳이 에외처리 해야하나
-    //  그냥 RestClientResponseException 하위 에러 그대로 던져도 충분히 상황 이해할만한데
     public <R> R execute(GAuthCallback<R> action) throws RestClientResponseException, GAuthAuthenticationException {
         try {
             return action.execute();
@@ -29,6 +27,8 @@ public class GAuthTemplate {
             throw new GAuthAuthenticationException(GAUTH_SERVER_CODE,
                     "Something wrong access to GAuth Authorization Sever", e.getCause()
             );
+        } catch (RestClientResponseException e) {
+            throw new GAuthAuthenticationException(e.getMessage(), e.getStatusText(), e.getCause());
         }
     }
 }

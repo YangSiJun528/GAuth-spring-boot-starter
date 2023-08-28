@@ -1,5 +1,8 @@
 package dev.yangsijun.gauth.userinfo;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.yangsijun.gauth.core.GAuthAuthenticationException;
 import dev.yangsijun.gauth.core.user.DefaultGAuthUser;
 import dev.yangsijun.gauth.core.user.GAuthUser;
 import dev.yangsijun.gauth.registration.GAuthRegistration;
@@ -12,8 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
@@ -28,7 +29,7 @@ public class DefaultGAuthUserService
         implements GAuthUserService<GAuthAuthorizationRequest, GAuthUser> {
     private static final String GET_USERINFO_URL = "https://open.gauth.co.kr/user";
     private static final String GET_TOKEN_URL = "https://server.gauth.co.kr/oauth/token";
-    //private final ObjectMapper mapper;
+    private final ObjectMapper mapper;
     private final static String GAUTH_PREFIX = "GAUTH_";
     private final GAuthTemplate gAuthTemplate;
     private final RestTemplate restTemplate;
@@ -36,7 +37,7 @@ public class DefaultGAuthUserService
     public DefaultGAuthUserService() {
         this.restTemplate = new RestTemplate();
         this.gAuthTemplate = new GAuthTemplate();
-        //this.mapper = new ObjectMapper();
+        this.mapper = new ObjectMapper();
     }
 
     @Override
@@ -46,6 +47,9 @@ public class DefaultGAuthUserService
         String accessToken = token.get("accessToken");
 
         HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", "application/json");
+        headers.set("Connection", "keep-alive");
+        headers.set("Content-Type", "application/json");
         headers.set("Authorization", "Bearer " + accessToken);
 
         ResponseEntity<Map<String, Object>> response = gAuthTemplate.execute(() ->
@@ -67,17 +71,28 @@ public class DefaultGAuthUserService
         String clientSecret = registration.getClientSecret();
         String redirectUri = registration.getRedirectUri();
 
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        params.add("code", code);
-        params.add("clientId", clientId);
-        params.add("clientSecret", clientSecret);
-        params.add("redirectUri", redirectUri);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Accept", "application/json");
+        headers.set("Connection", "keep-alive");
+        headers.set("Content-Type", "application/json");
+
+        Map<String, String> body = new HashMap<>();
+        body.put("code", code);
+        body.put("clientId", clientId);
+        body.put("clientSecret", clientSecret);
+        body.put("redirectUri", redirectUri);
+
+        try {
+            mapper.writeValueAsString(body);
+        } catch (JsonProcessingException e) {
+            throw new GAuthAuthenticationException("json_serialization_error", e.getMessage(), e.getCause());
+        }
 
         ResponseEntity<Map<String, String>> response = gAuthTemplate.execute(() ->
                 restTemplate.exchange(
                         GET_TOKEN_URL,
                         HttpMethod.POST,
-                        new HttpEntity<>(params, HttpHeaders.EMPTY),
+                        new HttpEntity<>(body, headers),
                         new ParameterizedTypeReference<>() {
                         }
                 ));
