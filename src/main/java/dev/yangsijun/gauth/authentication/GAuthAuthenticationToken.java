@@ -42,6 +42,7 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
         super(Collections.emptyList());
         this.code = code;
         this.additionalParameters = additionalParameters;
+        this.registration = registration;
         this.setAuthenticated(false);
     }
 
