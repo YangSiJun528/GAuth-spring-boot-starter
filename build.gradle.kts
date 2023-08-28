@@ -20,7 +20,7 @@ tasks {
 
 
 group = "dev.yangsijun"
-version = "2.0.1-alpha-3"
+version = "2.0.1"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
