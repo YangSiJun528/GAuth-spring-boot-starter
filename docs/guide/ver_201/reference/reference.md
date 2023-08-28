@@ -71,7 +71,7 @@ gauth.security.redirect-uri:http://localhost:8080/login/gauth/code
 <!-- TOC --><a name="gauthloginconfigurer-bean-"></a>
 ### GAuthLoginConfigurer Bean 등록하기
 
-Spring Security의 Configuration에 관한 내용은 [공식문서](https://docs.spring.io/spring-security/reference/index.html)를 참고하세요.
+Spring Security의 Configuration에 관한 내용은 [Spring Security 공식문서](https://docs.spring.io/spring-security/reference/index.html)를 참고하세요.
 
 Spring Security의 SecurityFilterChain에 Gauth 설정을 위한 `GAuthLoginConfigurer`를 등록해야 합니다.
 
@@ -104,7 +104,7 @@ public class SecurityConfig {
 <!-- TOC --><a name="-2"></a>
 #### 예시 2
 
-Endpoint나 Handler를 Custom 할 수 있습니다.
+Endpoint나 Handler를 변경할 수 있습니다.
 
 ```java
 
