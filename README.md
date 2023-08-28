@@ -9,9 +9,9 @@
 
 ## 설명
 
-이 모듈은 Spring Security의 기능을 활용하여 GAuth를 쉽게 사용할 수 있도록 개발되었습니다.   
-GAuth를 Spring Security Starter에서 지원하는 OAuth2와 유사한 방식으로 편리하게 사용할 수 있습니다.     
-또한, 자체로그인, formLogin, OAuth2 처럼 기존의 인증과도 문제없이 호환됩니다.
+이 모듈은 Spring Security의 기능을 활용하여 GAuth를 간편하게 사용할 수 있도록 개발되었습니다.    
+GAuth를 Spring Security Starter에서 제공하는 OAuth2와 유사한 방식으로 편리하게 사용할 수 있습니다.   
+더불어, 이 모듈은 자체 로그인, formLogin, OAuth2와 같은 기존의 다양한 인증 방식과도 원활하게 호환됩니다.  
 
 ## Install
 
