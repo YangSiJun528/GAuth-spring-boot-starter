@@ -8,20 +8,18 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * An implementation of an {@link AbstractAuthenticationToken} that represents an GAuth Authentication.
- * @since 2.0.0
+ *
  * @author Yang Sijun
+ * @since 2.0.0
  */
 public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
     private static final long serialVersionUID = GAuthPluginVersion.SERIAL_VERSION_UID;
     private String code;
     private GAuthUser principal;
     private GAuthRegistration registration;
-    private Map<String, Object> additionalParameters = new HashMap<>();
 
     public GAuthAuthenticationToken(
             Collection<? extends GrantedAuthority> authorities,
@@ -36,12 +34,10 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
 
     public GAuthAuthenticationToken(
             String code,
-            Map<String, Object> additionalParameters,
             GAuthRegistration registration
     ) {
         super(Collections.emptyList());
         this.code = code;
-        this.additionalParameters = additionalParameters;
         this.registration = registration;
         this.setAuthenticated(false);
     }
@@ -61,10 +57,6 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
         return code;
     }
 
-    public Map<String, Object> getAdditionalParameters() {
-        return additionalParameters;
-    }
-
     public GAuthRegistration getRegistration() {
         return registration;
     }
@@ -74,7 +66,6 @@ public class GAuthAuthenticationToken extends AbstractAuthenticationToken {
         return "GAuthAuthenticationToken{" +
                 "code='" + code + '\'' +
                 ", principal=" + principal +
-                ", additionalParameters=" + additionalParameters +
                 '}';
     }
 }

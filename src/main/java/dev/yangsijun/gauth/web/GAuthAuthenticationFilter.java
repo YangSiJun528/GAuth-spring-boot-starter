@@ -11,7 +11,6 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Collections;
 
 /**
  * An implementation of an {@link AbstractAuthenticationProcessingFilter} for GAuth Login.
@@ -45,7 +44,7 @@ public class GAuthAuthenticationFilter extends AbstractAuthenticationProcessingF
         }
         Object authenticationDetails = this.authenticationDetailsSource.buildDetails(request);
         GAuthAuthenticationToken authenticationRequest =
-                new GAuthAuthenticationToken(code, Collections.emptyMap(), registration);
+                new GAuthAuthenticationToken(code, registration);
         authenticationRequest.setDetails(authenticationDetails);
         GAuthAuthenticationToken authenticationResult =
                 (GAuthAuthenticationToken) this.getAuthenticationManager().authenticate(authenticationRequest);
