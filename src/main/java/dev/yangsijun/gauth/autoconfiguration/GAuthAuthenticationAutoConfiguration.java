@@ -8,7 +8,6 @@ import dev.yangsijun.gauth.userinfo.DefaultGAuthUserService;
 import dev.yangsijun.gauth.userinfo.GAuthAuthorizationRequest;
 import dev.yangsijun.gauth.userinfo.GAuthUserService;
 import dev.yangsijun.gauth.web.GAuthAuthenticationEntryPoint;
-import gauth.GAuth;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -25,21 +24,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 public class GAuthAuthenticationAutoConfiguration {
 
     private final AuthenticationConfiguration authenticationConfiguration;
-    private final GAuth gAuth;
-    private final GAuthTemplate gAuthTemplate;
     private final GAuthRegistration gAuthRegistration;
 
-    public GAuthAuthenticationAutoConfiguration(AuthenticationConfiguration authenticationConfiguration, GAuth gAuth, GAuthTemplate gAuthTemplate, GAuthRegistration gAuthRegistration) {
+    public GAuthAuthenticationAutoConfiguration(AuthenticationConfiguration authenticationConfiguration, GAuthRegistration gAuthRegistration) {
         this.authenticationConfiguration = authenticationConfiguration;
-        this.gAuth = gAuth;
-        this.gAuthTemplate = gAuthTemplate;
         this.gAuthRegistration = gAuthRegistration;
     }
 
     @Bean
     @ConditionalOnMissingBean(GAuthUserService.class)
     public GAuthUserService<GAuthAuthorizationRequest, GAuthUser> autoGAuthUserService() {
-        return new DefaultGAuthUserService(gAuth, gAuthRegistration, gAuthTemplate);
+        return new DefaultGAuthUserService();
     }
 
     @Bean

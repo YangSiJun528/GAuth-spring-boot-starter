@@ -2,8 +2,6 @@ package dev.yangsijun.gauth.autoconfiguration;
 
 import dev.yangsijun.gauth.registration.GAuthRegistration;
 import dev.yangsijun.gauth.template.GAuthTemplate;
-import gauth.GAuth;
-import gauth.impl.GAuthImpl;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -18,20 +16,9 @@ import org.springframework.context.annotation.Bean;
 public class GAuthClientAutoConfiguration {
 
     private final GAuthProperties properties;
+
     public GAuthClientAutoConfiguration(GAuthProperties properties) {
         this.properties = properties;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(GAuth.class)
-    public GAuth autoGAuth() {
-        return new GAuthImpl();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean(GAuthTemplate.class)
-    public GAuthTemplate autoGAuthTemplate() {
-        return new GAuthTemplate();
     }
 
     @Bean
