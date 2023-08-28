@@ -57,7 +57,7 @@ public class DefaultGAuthUserService
                         GET_USERINFO_URL,
                         HttpMethod.GET,
                         new HttpEntity<>(headers),
-                        new ParameterizedTypeReference<>() {
+                        new ParameterizedTypeReference<Map<String, Object>>() {
                         }
                 ));
 
@@ -93,7 +93,7 @@ public class DefaultGAuthUserService
                         GET_TOKEN_URL,
                         HttpMethod.POST,
                         new HttpEntity<>(body, headers),
-                        new ParameterizedTypeReference<>() {
+                        new ParameterizedTypeReference<Map<String, String>>() {
                         }
                 ));
         return response.getBody();
