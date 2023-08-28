@@ -1,8 +1,6 @@
 package dev.yangsijun.gauth.autoconfiguration;
 
 import dev.yangsijun.gauth.registration.GAuthRegistration;
-import dev.yangsijun.gauth.template.GAuthTemplate;
-import gauth.GAuth;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.autoconfigure.AutoConfigurations;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
@@ -28,7 +26,6 @@ class GAuthClientAutoConfigurationTest {
     @Test
     void autoConfigurationShouldProvideBeans() {
         contextRunner.run(context -> {
-            assertThat(context).hasSingleBean(GAuth.class);
             assertThat(context).hasSingleBean(GAuthRegistration.class);
         });
     }

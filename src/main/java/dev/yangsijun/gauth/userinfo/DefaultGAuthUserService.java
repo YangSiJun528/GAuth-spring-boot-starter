@@ -4,12 +4,17 @@ import dev.yangsijun.gauth.core.user.DefaultGAuthUser;
 import dev.yangsijun.gauth.core.user.GAuthUser;
 import dev.yangsijun.gauth.registration.GAuthRegistration;
 import dev.yangsijun.gauth.template.GAuthTemplate;
-import gauth.GAuth;
-import gauth.GAuthToken;
-import gauth.GAuthUserInfo;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
 
@@ -21,47 +26,76 @@ import java.util.*;
  */
 public class DefaultGAuthUserService
         implements GAuthUserService<GAuthAuthorizationRequest, GAuthUser> {
-
-    private final GAuth gAuth;
-    private final GAuthTemplate gAuthTemplate;
+    private static final String GET_USERINFO_URL = "https://open.gauth.co.kr/user";
+    private static final String GET_TOKEN_URL = "https://server.gauth.co.kr/oauth/token";
+    //private final ObjectMapper mapper;
     private final static String GAUTH_PREFIX = "GAUTH_";
+    private final GAuthTemplate gAuthTemplate;
+    private final RestTemplate restTemplate;
 
-    public DefaultGAuthUserService(GAuth gAuth) {
-        this.gAuth = gAuth;
+    public DefaultGAuthUserService() {
+        this.restTemplate = new RestTemplate();
         this.gAuthTemplate = new GAuthTemplate();
+        //this.mapper = new ObjectMapper();
     }
 
     @Override
     public GAuthUser loadUser(GAuthAuthorizationRequest userRequest)
             throws AuthenticationException {
-        GAuthToken token = getToken(userRequest);
-        String accessToken = token.getAccessToken();
+        Map<String, String> token = getToken(userRequest);
+        String accessToken = token.get("accessToken");
 
-        GAuthUserInfo info = gAuthTemplate.execute(() ->
-                gAuth.getUserInfo(accessToken));
-        return getGAuthUser(info, token);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + accessToken);
+
+        ResponseEntity<Map<String, Object>> response = gAuthTemplate.execute(() ->
+                restTemplate.exchange(
+                        GET_USERINFO_URL,
+                        HttpMethod.GET,
+                        new HttpEntity<>(headers),
+                        new ParameterizedTypeReference<>() {
+                        }
+                ));
+
+        return getGAuthUser(response.getBody(), token);
     }
 
-    private GAuthToken getToken(GAuthAuthorizationRequest request) {
+    private Map<String, String> getToken(GAuthAuthorizationRequest request) {
         GAuthRegistration registration = request.getRegistration();
         String code = request.getCode();
         String clientId = registration.getClientId();
         String clientSecret = registration.getClientSecret();
         String redirectUri = registration.getRedirectUri();
-        return gAuthTemplate.execute(() ->
-                gAuth.generateToken(code, clientId, clientSecret, redirectUri));
+
+        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+        params.add("code", code);
+        params.add("clientId", clientId);
+        params.add("clientSecret", clientSecret);
+        params.add("redirectUri", redirectUri);
+
+        ResponseEntity<Map<String, String>> response = gAuthTemplate.execute(() ->
+                restTemplate.exchange(
+                        GET_TOKEN_URL,
+                        HttpMethod.POST,
+                        new HttpEntity<>(params, HttpHeaders.EMPTY),
+                        new ParameterizedTypeReference<>() {
+                        }
+                ));
+        return response.getBody();
     }
 
-    private GAuthUser getGAuthUser(GAuthUserInfo info, GAuthToken token) {
+    private GAuthUser getGAuthUser(Map<String, Object> info, Map<String, String> token) {
         String nameAttribute = "email";
-        String email = info.getEmail();
-        String name = info.getName();
-        Integer grade = info.getGrade();
-        Integer classNum = info.getClassNum();
-        Integer num = info.getNum();
-        String gender = info.getGender();
-        String profileUrl = info.getProfileUrl();
-        String role = info.getRole();
+        String email = (String) info.get("email");
+        String name = (String) info.get("name");
+        Integer grade = (Integer) info.get("grade");
+        Integer classNum = (Integer) info.get("classNum");
+        Integer num = (Integer) info.get("num");
+        String gender = (String) info.get("gender");
+        String profileUrl = (String) info.get("profileUrl");
+        String role = (String) info.get("role");
+        String accessToken = token.get("accessToken");
+        String refreshToken = token.get("refreshToken");
 
         Map<String, Object> attributes = new HashMap<>(Map.of(
                 nameAttribute, email,
@@ -72,8 +106,8 @@ public class DefaultGAuthUserService
                 "gender", gender,
                 "profileUrl", profileUrl,
                 "role", role,
-                "accessToken", token.getAccessToken(),
-                "refreshToken", token.getRefreshToken()
+                "accessToken", accessToken,
+                "refreshToken", refreshToken
         ));
 
         Collection<GrantedAuthority> authorities = new ArrayList<>(

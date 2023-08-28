@@ -20,7 +20,7 @@ tasks {
 
 
 group = "dev.yangsijun"
-version = "2.0.1-alpha-1"
+version = "2.0.1-alpha-2"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -31,11 +31,9 @@ java {
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
-    api("com.github.GSM-MSG:GAuth-SDK-Java:v2.0.1")
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-web")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
@@ -55,6 +53,15 @@ publishing {
             version = version
 
             from(components["java"])
+
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
         }
     }
 }
