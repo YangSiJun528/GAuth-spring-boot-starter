@@ -9,9 +9,9 @@
 
 ## 설명
 
-이 모듈은 Spring Security의 기능을 활용하여 GAuth를 쉽게 사용할 수 있도록 개발되었습니다.   
-GAuth를 Spring Security Starter에서 지원하는 OAuth2와 유사한 방식으로 편리하게 사용할 수 있습니다.     
-또한, 자체로그인, formLogin, OAuth2 처럼 기존의 인증과도 문제없이 호환됩니다.
+이 모듈은 Spring Security의 기능을 활용하여 GAuth를 간편하게 사용할 수 있도록 개발되었습니다.    
+GAuth를 Spring Security Starter에서 제공하는 OAuth2와 유사한 방식으로 편리하게 사용할 수 있습니다.   
+더불어, 이 모듈은 자체 로그인, formLogin, OAuth2와 같은 기존의 다양한 인증 방식과도 원활하게 호환됩니다.  
 
 ## Install
 
@@ -75,10 +75,10 @@ dependencies {
 
 ## Documentation
 
-| 모듈 버전                                                                                                 | Spring Boot 버전 | 최소 Java version | 참조 문서                                                         | API 문서                                          | 
-|-------------------------------------------------------------------------------------------------------|----------------|-----------------|---------------------------------------------------------------|-------------------------------------------------|
-| [2.0.1](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/2.0.1)                 | 2.x            | 11              | [Reference Doc.](./docs/guide/ver_201/reference/reference.md) | [API Doc.](./docs/guide/ver_201/api/index.html) |
-| [\[Deprecated\] 1.0.1 ](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/1.0.1) | 3.x            | 17              | [Reference Doc.](./docs/guide/ver_101/reference/reference.md) | ❌                                               |
+| 모듈 버전                                                                                                 | Spring Boot 버전 | 최소 Java version | 참조 문서                                                         | API 문서                                        | 
+|-------------------------------------------------------------------------------------------------------|----------------|-----------------|---------------------------------------------------------------|-----------------------------------------------|
+| [2.0.1](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/2.0.1)                 | 2.x            | 11              | [Reference Doc.](./docs/guide/ver_201/reference/reference.md) | [API Doc.](https://htmlpreview.github.io/?https://github.com/YangSiJun528/GAuth-spring-boot-starter/blob/main/docs/guide/ver_201/api/index.html) |
+| [\[Deprecated\] 1.0.1 ](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/1.0.1) | 3.x            | 17              | [Reference Doc.](./docs/guide/ver_101/reference/reference.md) | ❌                                             |
 
 ## 튜토리얼
 
