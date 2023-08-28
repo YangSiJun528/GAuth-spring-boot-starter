@@ -75,10 +75,10 @@ dependencies {
 
 ## Documentation
 
-| 모듈 버전                                                                                                 | Spring Boot 버전 | 최소 Java version | 참조 문서                                                         | API 문서                                          | 
-|-------------------------------------------------------------------------------------------------------|----------------|-----------------|---------------------------------------------------------------|-------------------------------------------------|
-| [2.0.1](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/2.0.1)                 | 2.x            | 11              | [Reference Doc.](./docs/guide/ver_201/reference/reference.md) | [API Doc.](./docs/guide/ver_201/api/index.html) |
-| [\[Deprecated\] 1.0.1 ](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/1.0.1) | 3.x            | 17              | [Reference Doc.](./docs/guide/ver_101/reference/reference.md) | ❌                                               |
+| 모듈 버전                                                                                                 | Spring Boot 버전 | 최소 Java version | 참조 문서                                                         | API 문서                                        | 
+|-------------------------------------------------------------------------------------------------------|----------------|-----------------|---------------------------------------------------------------|-----------------------------------------------|
+| [2.0.1](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/2.0.1)                 | 2.x            | 11              | [Reference Doc.](./docs/guide/ver_201/reference/reference.md) | [API Doc.](https://htmlpreview.github.io/?https://github.com/YangSiJun528/GAuth-spring-boot-starter/blob/main/docs/guide/ver_201/api/index.html) |
+| [\[Deprecated\] 1.0.1 ](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/1.0.1) | 3.x            | 17              | [Reference Doc.](./docs/guide/ver_101/reference/reference.md) | ❌                                             |
 
 ## 튜토리얼
 
