@@ -1,0 +1,10 @@
+dev.yangsijun.gauth
+dev.yangsijun.gauth.authentication
+dev.yangsijun.gauth.autoconfiguration
+dev.yangsijun.gauth.configurer
+dev.yangsijun.gauth.core
+dev.yangsijun.gauth.core.user
+dev.yangsijun.gauth.registration
+dev.yangsijun.gauth.template
+dev.yangsijun.gauth.userinfo
+dev.yangsijun.gauth.web
