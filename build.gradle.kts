@@ -2,7 +2,7 @@ plugins {
     java
     `java-library`
     `maven-publish`
-    id("org.springframework.boot") version "2.7.14"
+    id("org.springframework.boot") version "3.1.4"
     id("io.spring.dependency-management") version "1.0.15.RELEASE"
 }
 
@@ -23,8 +23,8 @@ group = "dev.yangsijun"
 version = "2.0.1"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
     withJavadocJar()
 }
