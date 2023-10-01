@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    dev.yangsijun.gauth.autoconfiguration.GAuthClientAutoConfiguration,\
-    dev.yangsijun.gauth.autoconfiguration.GAuthAuthenticationAutoConfiguration,\
-    dev.yangsijun.gauth.autoconfiguration.GAuthAuthenticationProviderAutoConfiguration
