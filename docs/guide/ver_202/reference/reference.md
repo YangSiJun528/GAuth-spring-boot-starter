@@ -84,10 +84,10 @@ Spring Security의 SecurityFilterChain에 Gauth 설정을 위한 `GAuthLoginConf
 
 @Configuration
 public class SecurityConfig {
-    private final GAuthLoginConfigurer gatuh;
+    private final GAuthLoginConfigurer gauth;
 
     public SecurityConfig(GAuthLoginConfigurer gAuthLoginConfigurer) {
-        this.gatuh = gAuthLoginConfigurer;
+        this.gauth = gAuthLoginConfigurer;
     }
     // ...
 
@@ -95,7 +95,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 // ...
-                .apply(gatuh);
+                .apply(gauth);
         return http.build();
     }
 }
@@ -110,10 +110,10 @@ Endpoint나 Handler를 변경할 수 있습니다.
 
 @Configuration
 public class SecurityConfig {
-    private final GAuthLoginConfigurer gatuh;
+    private final GAuthLoginConfigurer gauth;
 
     public SecurityConfig(GAuthLoginConfigurer gAuthLoginConfigurer) {
-        this.gatuh = gAuthLoginConfigurer;
+        this.gauth = gAuthLoginConfigurer;
     }
     // ...
 
@@ -121,7 +121,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 // ...
-                .apply(gatuh
+                .apply(gauth
                         .loginPageUrl("/to-gauth-login-page")
                         .loginProcessingUrl("/login/code/gauth")
                         .successHandler(
