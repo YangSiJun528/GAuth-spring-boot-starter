@@ -69,9 +69,9 @@ dependencies {
 
 ## 시작하기
 
-간단한 프로젝트를 따라 구현하면서 사용법을 익히고 싶다면 튜토리얼을 참고하세요.
+간단한 프로젝트를 따라 구현하면서 사용법을 익히고 싶다면 가이드를 참고하세요.
 
-더 자세한 정보를 확인하고 싶으면 참조 문서와 API 문서를 읽어보세요.
+더 자세한 정보를 확인하고 싶으면 [WIKI](https://github.com/YangSiJun528/GAuth-spring-boot-starter/wiki), 참조 문서와 API 문서를 읽어보세요.
 
 ## Documentation
 
@@ -81,13 +81,15 @@ dependencies {
 | [2.0.2](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/2.0.2)                 | 2.7.x 이상       | 11              | [Reference Doc.](./docs/guide/ver_202/reference/reference.md) | [API Doc.](https://htmlpreview.github.io/?https://github.com/YangSiJun528/GAuth-spring-boot-starter/blob/main/docs/guide/ver_202/api/index.html) |
 | [\[Deprecated\] 1.0.1 ](https://github.com/YangSiJun528/GAuth-spring-boot-starter/releases/tag/1.0.1) | 3.x 이상         | 17              | [Reference Doc.](./docs/guide/ver_101/reference/reference.md) | ❌                                                                                                                                                |
 
-## 튜토리얼
+## 가이드
 
-- ### [GAuth 시작하기](./docs/guide/tutorial/basic/index.md)
+- ### [GAuth 시작하기](https://github.com/YangSiJun528/GAuth-spring-boot-starter/wiki/%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0)
     - 가장 기본적인 사용법을 익힐 수 있습니다.
-- ### [JWT 기능 추가하기](./docs/guide/tutorial/jwt/index.md)
-    - 인증 전후로 필요한 커스텀로직을 추가하는 방법을 소개합니다.
-    - 해당 예시에서는 인증 정보를 Database에 저장하고, JWT를 통한 인증/인가 기능을 추가합니다.
+- ### [커스텀 로직 추가하기](https://github.com/YangSiJun528/GAuth-spring-boot-starter/wiki/%EC%BB%A4%EC%8A%A4%ED%85%80-%EB%A1%9C%EC%A7%81-%EC%B6%94%EA%B0%80)
+  - 인증 전후로 필요한 커스텀로직을 추가하는 방법을 소개합니다.
+  - 해당 예시에서는 인증 정보를 Database에 저장하는 로직을 추가합니다.
+- ### [JWT 기능 추가하기](https://github.com/YangSiJun528/GAuth-spring-boot-starter/wiki/JWT-%EC%9D%B8%EC%A6%9D-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)
+    - JWT 인증/인가 기능을 추가한 프로젝트를 구현합니다.
 
 ## 기여
 
